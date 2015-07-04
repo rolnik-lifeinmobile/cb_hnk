@@ -6,7 +6,7 @@ description      "Provides a resource for downloading build packages and deployi
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "1.5.0"
 
-depends "hipsnip-s3cmd"
+
 
 attribute "s3_deploy/bucket",
   :display_name => "S3 bucket",
