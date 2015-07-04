@@ -1,12 +1,5 @@
 include_recipe 'deploy'
 
-git "#{current_release}/#{repo[:path]}" do
-    repository repo[:repository]
-    revision repo[:branch]
-    action :sync
-    ignore_failure true
-end
-
 
 node[:deploy].each do |application, deploy|
 
