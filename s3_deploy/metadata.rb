@@ -1,5 +1,5 @@
 name             "s3_deploy"
-maintainer       "HipSnip Ltd."
+maintainer       "s3_deploy"
 maintainer_email "adam@hipsnip.com"
 license          "Apache 2.0"
 description      "Provides a resource for downloading build packages and deploying them onto a server"
@@ -22,3 +22,12 @@ attribute "s3_deploy/deploy_root",
   :type => "string",
   :required => "required",
   :default => "/home/web"
+
+
+
+recipe            "cb_hnk::s3deploy", "S3 deploy"
+
+
+%w{ amazon centos }.each do |os|
+  supports os
+end
