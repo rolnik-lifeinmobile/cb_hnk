@@ -14,5 +14,11 @@ node[:deploy].each do |application, deploy|
     path deploy[:deploy_to]
   end
 
+  s3_deploy do
+    deploy_data deploy
+    app application
+    target_env node[:target_environment]
+  end
+
 end
 
