@@ -10,8 +10,8 @@ env:
     - secure: d9KdasPrp362eIhLNUrL+pdiX1C+Nvga+tDiIC/Pn/jRmyXRMlcvSKRWEofr/JaGMDTlQN8sB+kAZ9Xi3LWFeGI/Z7YBG4ba0pciE/sfVAriklEom7F2/kI55l/1P6XqMG6OvHUsmdORTy6v/xm/CDsrofsLtFqujfKZuHEIADozO1cbNOTAkGuWBMylptRmfmEbo51cqu8Zx/L4DjpjRIAg+xdKTHGWraMC/vWz1nFHV9kXXx8f3wwDu/7zrIo8zaXhMWz70NwvgmzBbnagm0NvLJ/fdkcucsMZdED3lSlJMN/UI2DJj1a0u27WvSZrn/ggGhl20AbzNTmaZUFiXw==
     
 before_script: 
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
+  - sudo mkdir -p shippable/testresults
+  - sudo mkdir -p shippable/codecoverage
   - mysql -e 'create database if not exists test;'
   - sudo cp test-config/opsworks.php /var/www/html/subwaysymphony_live/html/opsworks.php
       
