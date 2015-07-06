@@ -13,8 +13,8 @@ before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - mysql -e 'create database if not exists test;'
-  - cp /var/www/html/opsworks/test-config/opsworks.php /var/www/html/subwaysymphony_live/html/opsworks.php
-
+  - cp test-config/opsworks.php /var/www/html/subwaysymphony_live/html/opsworks.php
+      
 script:
   - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage test.php
 
