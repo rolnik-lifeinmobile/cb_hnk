@@ -10,12 +10,11 @@ env:
     - secure: GP/dANupLGRngGytCcoYoxlhYz0nLXC4Isd1QoAGFrtFXchIF/hu+ujSVb01cQWktG7qhVv8t+8d32Eg20YOs7+PvpVNBOq+j1xSImfDVRRszkmkZSrgc0u8WDjLE+gMjqwalB/bZcgAF32GqyRjHYlyOoM4/WAYmbxN07ccMYAOsLVgvsYvCu2soQovhGWeX5H4xygupVAF8s/iDnxhBTknjaKice3SzwXvvp40gKzFGE7EXfQj73usNa7w5RmV+fsrl4k7XFhYbL7mGSqpBdETnT7UJHcuJclos4zywCaZFSZ+LvwQNebJOrWfrPPsTk0CL+E7FKo2f3C4B4s2cQ==
     
 before_script: 
-  - pwd
-  - cd '/var/www/html/opsworks' 
+  - ls -l
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - mysql -e 'create database if not exists test;' 
-  - cp test-config/opsworks.php /var/www/html/subwaysymphony_live/html/opsworks.php
+  - cp test-config/opsworks.php .
       
 script:
   - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage test.php
