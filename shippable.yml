@@ -10,13 +10,10 @@ env:
     - secure: AAAAB3NzaC1yc2EAAAADAQABAAABAQCrUYWlKEtNMPYrm7ysbIuiW9MB3vs7j3rTmiSMXpWi+fHcnCtmFm7EEizGuYNRqPKVK+4JparODC65wOJA7roHrqV6UW7GvAVRz1czhiy349I6hxupry4+Gf7jjcVAYNN/k44WgLHQlVvs/LCIb1bi/XztHvHJ1k7rMlVK1oghdkerhjx/NR+tfKBRXJPlOZrEv1ScsvY7WIhbDGEAzrlK1rPa6Tj5tq4DpAatHHodM16yvMCO8MOA05NsTBJHbKOYWzHg+elNEgikPxsSEHFfUsIQQTHT8eiskqjZZPPFu2zlij4tZjEIf5dtsXTCZfGHYrf2MFj+yoGaXueBmTEV
     
 before_script: 
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
-  - mysql -e 'create database if not exists test;'
-
+    - echo "dupa"
 
 script:
-  - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage test.php
+    - echo "jajco"
 
 after_success:
   - virtualenv ve && source ve/bin/activate && pip install awscli
