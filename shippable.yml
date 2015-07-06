@@ -10,10 +10,13 @@ env:
     - secure: gbRc5G/3gd6dN2UHshzxIEThlk8SjI00Oz7BahvUeyHufTBDyHWZQEZAOUIoEYSR7pwt73ExAI6+KgfdsG1InyLpZvmskb7INEYgUTmQ5nOSY/06gdlEXvTlolHBMu5Z1rk0PxFSt5VE77jSMsfLpIP3+HDARWwNadH+qAPPku2XWSOhPdlf2WoY5Ua9KqhuaqK5IRlIqLSQ9tyolEePyU43QfhNhSjA6U3gCcNYbiCcPInGEfA+8wZwMRw/BdateUPFGto7L6kHGyfKL/X9CiUjyeLgszHbEQsoBKr/DF1hwQptELZNTlKqUpCjQHMO81YJ6cNWV4Faa6QEP+n32WKycl1hxxXW/FTl26U2kn0eroBAffJ6JJdhJfBQ8Y3JVnpB2kEnsF5/H+Vg+p9cyhl+iKsWBiYkVdLTcN49DEqKK6Lei8dWXLuQGBSWBN4h26yf52mURIQxEptY1GfXCIDZL6Cd6b9S/Run7UHwtL/yoDrapMSbCj/zNbhQibmfsw5bflSoBluuInUnXyBumJ3ui1cAWfVDD1J8nG3kfmYMsw6Te1m6jodxIzHFxtQI+kToHmkgv0NPMgZgV41YdnJSrQdlZWkRPw/yNVOfnrNbn8LhkAisZo2lyuhUFjK33OpFe+QrnJ7h+6U3VjFbUuH5fRJ/s7NmFlj1WQkNuFw=
     
 before_script: 
-    - echo "dupa"
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - mysql -e 'create database if not exists test;'
+  - cp /var/www/html/opsworks/test-config/opsworks.php /var/www/html/subwaysymphony_live/html/opsworks.php
 
 script:
-    - echo "jajco"
+  - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage test.php
 
 after_success:
   - virtualenv ve && source ve/bin/activate && pip install awscli
